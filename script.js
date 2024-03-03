@@ -22,7 +22,7 @@ function signup(){
             localStorage.setItem(user,JSON.stringify(loginDetails))
             alert(`User ${loginDetails.user} added successfully`)
 
-            window.location="./login.html"
+            window.location="./index.html"
     }
 }
 
