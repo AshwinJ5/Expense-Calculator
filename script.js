@@ -69,12 +69,15 @@ function income(){
     }else{
             document.getElementById("balanceValue").innerHTML=`<div style="color: white;font-weight: 700;font-size: 30px;" id="balanceValue">Rs ${tempBal}/-</div>`
         
+            
         document.getElementById("extension").innerHTML+=`<tbody><tr>
         <td scope="col">${typeIncome}</td>
-        <td scope="col">${amountBal}</td>
-        <td scope="col">${tempBal}</td>
+        <td scope="col">Rs.${amountBal}</td>
+        <td scope="col">Rs.${tempBal}</td>
         <td scope="col">${date}</td>
       </tr></tbody>`
+      incometype.value="";
+      incomeamount.value="";
       
 }
 }
@@ -86,18 +89,31 @@ function expense(){
     amountExp=expenseamount.value
     amountBal=Math.floor(amountBal);
     tempBal-=amountExp
+    
 
     if(amountExp=="" || typeExpense==""){
         alert('Enter all fields');}
-       else if(amountExp>tempBal){
-            alert('Insufficient Income for Expense')
+       else if(tempBal<0){
+        document.getElementById("expenseValue").innerHTML=`<div style="color: white;font-weight: 700;font-size: 30px;" id="balanceValue">Rs ${tempBal}/-</div>`
+        
+        document.getElementById("extend").innerHTML+=`<tbody><tr>
+        <td scope="col">${typeExpense}</td>
+        <td scope="col">Rs.${amountExp}</td>
+        <td scope="col">Debt of Rs.${Math.abs(tempBal)}</td>
+        <td scope="col">${date}</td>
+      </tr></tbody>`
+      expensetype.value="";
+      expenseamount.value="";
         }else{
             document.getElementById("expenseValue").innerHTML=`<div style="color: white;font-weight: 700;font-size: 30px;" id="balanceValue">Rs ${tempBal}/-</div>`
         
             document.getElementById("extend").innerHTML+=`<tbody><tr>
             <td scope="col">${typeExpense}</td>
-            <td scope="col">${amountExp}</td>
-            <td scope="col">${tempBal}</td>
+            <td scope="col">Rs.${amountExp}</td>
+            <td scope="col">Rs.${tempBal}</td>
             <td scope="col">${date}</td>
-          </tr></tbody>`}
+          </tr></tbody>`
+          expensetype.value="";
+          expenseamount.value="";
+        }
         }
